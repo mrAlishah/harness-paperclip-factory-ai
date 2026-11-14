@@ -1,12 +1,7 @@
 name: PR review API access
 
 on:
-  pull_request:
-    paths:
-      - .github/scripts/notify-pr-merge-review.mjs
-      - .github/scripts/tests/notify-pr-merge-review.test.mjs
-      - .github/workflows/pr-merge-review.yml
-      - .github/workflows/pr-review-api-access.yml
+  workflow_dispatch:
 
 permissions:
   actions: read
