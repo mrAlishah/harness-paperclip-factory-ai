@@ -7,9 +7,7 @@ name: CI runner-loss rerun
 # becomes attempt 2's triggering actor. See "Trusted PR Workflow" in
 # doc/DEVELOPING.md.
 on:
-  workflow_run:
-    workflows: [PR]
-    types: [completed]
+  workflow_dispatch:
 
 permissions:
   # rerun-failed-jobs, and reading jobs and job logs.
