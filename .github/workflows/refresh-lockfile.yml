@@ -1,13 +1,8 @@
 name: Refresh Lockfile
 
 on:
-  push:
-    branches:
-      - master
-  schedule:
-    # Retry refreshes held by the release-age gate once their versions are old enough.
-    - cron: "23 6 * * *"
   workflow_dispatch:
+
 
 concurrency:
   group: refresh-lockfile-master
