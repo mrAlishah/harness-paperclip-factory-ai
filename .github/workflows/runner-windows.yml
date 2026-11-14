@@ -4,32 +4,10 @@ name: Runner Windows
 # workflow because pr.yml runs pr-trusted.yml from master: a lane added there
 # would not run on the pull request that adds or changes it.
 on:
-  pull_request:
-    paths:
-      - .github/workflows/runner-windows.yml
-      - packages/paperclip-runner/rust-toolchain.toml
-      - packages/paperclip-runner/acpx-profiles.json
-      - packages/paperclip-runner/antigravity-distributions.json
-      - packages/paperclip-runner/runner/**
-      - packages/paperclip-runner/protocol/**
-      - packages/paperclip-runner/test-fixtures/**
-      - packages/paperclip-runner/test/fixtures/**
-      - tests/runner-e2e/fixtures/**
-  push:
-    branches: [master]
-    paths:
-      - .github/workflows/runner-windows.yml
-      - packages/paperclip-runner/rust-toolchain.toml
-      - packages/paperclip-runner/acpx-profiles.json
-      - packages/paperclip-runner/antigravity-distributions.json
-      - packages/paperclip-runner/runner/**
-      - packages/paperclip-runner/protocol/**
-      - packages/paperclip-runner/test-fixtures/**
-      - packages/paperclip-runner/test/fixtures/**
-      - tests/runner-e2e/fixtures/**
   workflow_dispatch:
 
 permissions: {}
+
 
 concurrency:
   group: runner-windows-${{ github.event.pull_request.number || github.ref }}
