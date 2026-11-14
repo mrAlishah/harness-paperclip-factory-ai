@@ -1,8 +1,6 @@
 name: Runner Live Evals
 
 on:
-  schedule:
-    - cron: "17 6 * * 0"
   workflow_dispatch:
     inputs:
       candidate:
@@ -17,6 +15,7 @@ on:
         description: "Maximum executions after candidate/case filtering"
         type: string
         required: false
+
 
 concurrency:
   group: runner-live-evals-${{ github.ref }}

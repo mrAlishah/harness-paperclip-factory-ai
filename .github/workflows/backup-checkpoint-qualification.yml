@@ -15,8 +15,6 @@ on:
       - '.github/actions/setup-ci-dependencies/**'
       - 'package.json'
       - 'pnpm-lock.yaml'
-  push:
-    branches: [master]
 permissions:
   contents: read
 jobs:

@@ -1,18 +1,13 @@
 name: Agent runtime images
 
 on:
-  push:
-    branches: [master]
-    paths:
-      - "docker/agent-runtime/**"
-      - "tools/agent-shim/**"
-      - ".github/workflows/agent-runtime-images.yml"
   workflow_dispatch:
     inputs:
       version:
         description: "Image version tag (e.g., v1.0.0 or dev-test)"
         required: true
         default: "dev"
+
 
 permissions:
   contents: read

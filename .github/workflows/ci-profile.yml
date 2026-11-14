@@ -1,9 +1,7 @@
 name: CI profile
 
 on:
-  workflow_run:
-    workflows: [PR]
-    types: [completed]
+  workflow_dispatch:
 
 permissions:
   actions: read

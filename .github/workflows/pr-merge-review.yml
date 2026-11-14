@@ -1,27 +1,7 @@
 name: PR merge review notification
 
 on:
-  workflow_run:
-    workflows:
-      - PR
-      - Runner Windows
-      - Sentry SDK contract
-      - Runner image
-      - commitperclip PR Review
-      - Storybook Visual
-      - Storybook Deploy
-      - CI work benchmark
-      - Incremental CI qualification
-      - Backup checkpoint qualification
-      - PR review API access
-    types: [completed]
-  # External check providers and legacy commit statuses can finish after CI.
-  # GitHub has no trigger-level filter for these events, so the job condition
-  # below skips them before a runner is allocated. GitHub Actions check runs
-  # are covered by the workflow_run list above.
-  check_run:
-    types: [completed]
-  status:
+  workflow_dispatch:
 
 permissions:
   actions: read

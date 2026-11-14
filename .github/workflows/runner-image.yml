@@ -21,45 +21,8 @@ name: Runner image
 # image needs its own signer identity so its attestation cannot stand in for
 # the application image's.
 on:
-  push:
-    branches:
-      - master
-  pull_request:
-    # Every input of scripts/runner-image-identity.mjs, .dockerignore (it
-    # decides which of those files the build receives), and the pipeline's
-    # own files. A test checks that every identity input is covered.
-    paths:
-      - .github/workflows/runner-image.yml
-      - Dockerfile
-      - .dockerignore
-      - .npmrc
-      - package.json
-      - pnpm-lock.yaml
-      - pnpm-workspace.yaml
-      - tsconfig.base.json
-      - patches/**
-      - packages/paperclip-runner/**
-      - packages/paperclip-eval-kernel/**
-      - packages/shared/src/provider-failure.generated.ts
-      - scripts/create-provider-pack-archive.mjs
-      - scripts/link-plugin-dev-sdk.mjs
-      - scripts/runner-image-identity.mjs
-      - scripts/runner-image-layout.mjs
-      - scripts/runner-image-oci.mjs
-      - scripts/runner-image-publish.mjs
-      - scripts/standard-image-contract.mjs
-      - docker/runner-image/**
   workflow_dispatch:
-  schedule:
-    - cron: "23 6 * * 3"
 
-# Least privilege: nothing at the workflow level. Only the publish job, which
-# runs no build, can write images to the registry or sign.
-permissions: {}
-
-# A newer push to a pull request replaces its older run. A master run has a
-# group of its own, so no other run cancels it here. The publish job has a
-# second group, one for each digest; see there for what that group can cancel.
 concurrency:
   group: runner-image-${{ github.event.pull_request.number || github.sha }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}

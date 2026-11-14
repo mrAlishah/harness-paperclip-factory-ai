@@ -2,13 +2,12 @@ name: Cloud readiness
 run-name: Cloud readiness ${{ github.sha }}
 
 on:
-  push:
-    branches: [master]
   workflow_dispatch:
 
 permissions: {}
 
 # Source verification stays independent of npm publication and image builds.
+
 concurrency:
   group: cloud-readiness-${{ github.sha }}
   cancel-in-progress: false

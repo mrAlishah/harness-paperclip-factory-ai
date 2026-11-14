@@ -1,8 +1,6 @@
 name: Runner Live Protocol Evals
 
 on:
-  schedule:
-    - cron: "23 9 * * 0"
   workflow_dispatch:
     inputs:
       target_branch:
@@ -51,6 +49,7 @@ on:
         description: "Automatic retries only for explicitly retryable infrastructure failures (0-3)"
         type: number
         default: 0
+
 
 permissions:
   contents: read
